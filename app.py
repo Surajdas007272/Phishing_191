@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -11,11 +11,14 @@ def login():
     username = request.form['username']
     password = request.form['password']
 
-    # Save to file (only for testing/learning purposes)
+    # Save to file (for demo/testing purpose only)
     with open('credentials.txt', 'a') as f:
         f.write(f"Username: {username}, Password: {password}\n")
 
-    return "Login successful (credentials saved for demo purpose)"
+    # Also print in terminal
+    print(f"[LOG] Username: {username}, Password: {password}")
+
+    return "✅ Login successful! (Saved in credentials.txt)"
 
 if __name__ == '__main__':
     app.run(debug=True)
